@@ -6,8 +6,8 @@ function Footer() {
       <div className="flex flex-col md:flex-row justify-between items-start gap-8">
         {/* Left Section */}
         <div className="w-full md:w-1/2 md:pt-4">
-          <h1 className="text-base md:text-lg lg:text-xl mt-2 sm:mt-4 font-semibold">Hungerzz</h1>
-          <p className="text-xs md:text-sm font-semibold text-black/60 mt-2">At <span className="text-black/80">Hungerzz</span>, we believe great food brings people together. From fresh ingredients to fast delivery, every meal is crafted with care to brighten your day. Thank you for trusting us to serve you delicious moments. Stay hungry, stay happy! © 2025 Hungerzz</p>
+          <h1 className="text-base md:text-lg lg:text-xl mt-2 sm:mt-4 font-semibold">FoodRush</h1>
+          <p className="text-xs md:text-sm font-semibold text-black/60 mt-2">At <span className="text-black/80">FoodRush</span>, we believe great food brings people together. From fresh ingredients to fast delivery, every meal is crafted with care to brighten your day. Thank you for trusting us to serve you delicious moments. Stay hungry, stay happy! © 2025 FoodRush</p>
         </div>
 
         {/* Right Section */}
@@ -45,7 +45,7 @@ function Footer() {
         </div>
       </div>
 
-      <h1 className="text-xs text-center font-semibold py-4 text-black/60 md:text-black/90">Copyright 2025 © Hungerzz. Thank you for letting us be part of your delicious journey. Fresh meals, happy moments!</h1>
+      <h1 className="text-xs text-center font-semibold py-4 text-black/60 md:text-black/90">Copyright 2025 © FoodRush. Thank you for letting us be part of your delicious journey. Fresh meals, happy moments!</h1>
     </div>
   );
 

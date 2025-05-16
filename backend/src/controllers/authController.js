@@ -113,36 +113,6 @@ const dltUser = async (req, res) => {
     }
 }
 
-const newOrder2 = async (req, res) => {
-    try {
-        const id = "67f4ff742bcc66fc0f491997"
-        const foodOrder = [
-            { name: 'Burger', price: 50, rating: '4.2' },
-            { name: 'Pizza', price: 80, rating: '4.4' },
-        ]
-        await User.findOneAndUpdate({ _id: id }, { allOrders: foodOrder }, { new: true })
-        res.status(200).json({ message: "User deleted" })
-    } catch (error) {
-        res.status(500).json({ message: "Server Error!" })
-    }
-}
-
-const newOrder3 = async (req, res) => {
-    try {
-        const { foodOrder } = req.body;
-        const { id } = req.params;
-
-        await User.findByIdAndUpdate(id,
-            { $push: { allOrders: { $each: foodOrder } } },
-            { new: true }
-        );
-        res.status(200).json({ message: "Order placed successfully!" });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "Server Error!" });
-    }
-};
-
 const newOrder = async (req, res) => {
     try {
         const { items, totalPrice } = req.body;
@@ -165,6 +135,5 @@ const newOrder = async (req, res) => {
         res.status(500).json({ message: "Server Error!" });
     }
 }
-
 
 export { signUpUser, logInUser, logOutUser, checkAuth, allUsers, dltUser, newOrder }

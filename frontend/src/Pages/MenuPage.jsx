@@ -134,7 +134,7 @@ function MenuPage() {
                         </>
                     }
                 </div>
-                <button onClick={() => openInfoModal()} className='w-40 text-blue-600 cursor-pointer font-semibold flex items-center gap-1' ><FaArrowLeft /> Show more items</button>
+                <button onClick={() => (!authUser ? openInfoModal() : navigate('/menu'))} className={`w-40 text-blue-600 ${location.pathname === '/menu' ? ' hidden' : ''} cursor-pointer font-semibold flex items-center gap-1`} ><FaArrowLeft /> Show more items</button>
             </div>
         </div>
     )

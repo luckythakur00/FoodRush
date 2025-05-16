@@ -6,18 +6,44 @@ function ContactPage() {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [message, setMessage] = useState('')
+    const [submited, setSubmited] = useState(false)
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
+
         if (!name || !email || !message) {
-            toast.warn("Please fill all the fields!")
+            toast.warn("All fields are required!");
             return;
         }
-        console.log("Form Details: ", { name, email, message });
-        setName('')
-        setEmail('')
-        setMessage('')
-    }
+        setSubmited(true);
+
+        const apiKey = import.meta.env.VITE_API_KEY;
+        const userData = {
+            access_key: apiKey,
+            name: name,
+            email: email,
+            message: message
+        };
+
+        const res = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: JSON.stringify(userData)
+        }).then((res) => res.json());
+
+        if (res.success) {
+            toast.success("Message sent successfully");
+        } else {
+            toast.error("Server Error");
+        }
+        setName("");
+        setEmail("");
+        setMessage("");
+        setSubmited(false);
+    };
 
     return (
         <div className='pt-16 w-[90%] m-auto'>
@@ -59,7 +85,7 @@ function ContactPage() {
                         <textarea type="text" value={message} onChange={(e) => setMessage(e.target.value)} placeholder='Enter your Message' className='h-40 md:h-52 w-full lg:w-[80%] pt-4 pl-2 shadow-md shadow-black/40 text-sm outline-none text-black rounded overflow-hidden' />
                     </div>
                     <div className='mt-4 sm:my-8 ' >
-                        <button type="submit" className={`h-8 w-28 md:h-10 md:w-36 text-sm md:text-base font-semibold rounded-md bg-[#39DB4A] hover:bg-[#31bc3f]`} >Submit Now</button>
+                        <button type="submit" disabled={submited ? true : false} className={`h-8 w-28 md:h-10 md:w-36 text-sm md:text-base font-semibold rounded-md bg-[#39DB4A] hover:bg-[#31bc3f]`} >Submit Now</button>
                     </div>
                 </form>
             </div>

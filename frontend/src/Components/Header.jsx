@@ -28,7 +28,7 @@ function Header() {
           <Link to={'/'} onClick={() => setMenu('')} className='mx-4 font-semibold transition-all '> <span className={`${menu === '' ? 'text-green-600 transition-all' : 'text-black'} hover:text-green-600`} >Home</span></Link>
           <Link to={`/menu`} onClick={() => setMenu("menu")} className='mx-4 font-semibold transition-all '> <span className={`${menu === 'menu' ? 'text-green-600 transition-all' : 'text-black'} hover:text-green-600`} >Menu</span></Link>
           <Link to={'/service'} onClick={() => setMenu("service")} className='mx-4 font-semibold transition-all '><span className={`${menu === 'service' ? 'text-green-600 transition-all' : 'text-black'} hover:text-green-600`} >Services</span></Link>
-          <Link to={'/contact'} onClick={() => setMenu("contact")} className='mx-4 font-semibold transition-all '><span className={`${menu === 'contact' ? 'text-green-600 transition-all' : 'text-black'} hover:text-green-600`} >Contact</span></Link>
+          <Link to={'/contact'} onClick={() => (!authUser ? openInfoModal() : setMenu("contact"))} className='mx-4 font-semibold transition-all '><span className={`${menu === 'contact' ? 'text-green-600 transition-all' : 'text-black'} hover:text-green-600`} >Contact</span></Link>
           <div onClick={() => (!authUser ? openInfoModal() : (setMenu("foodCart"), navigate('/foodCart')))} className={`mx-4 font-semibold transition-all cursor-pointer hover:text-green-600 flex ${menu === 'foodCart' ? 'text-green-600 transition-all' : 'text-black'}`}>
             <h1>Cart</h1>
             <h1 className="px-1.5 text-xs animate-pulse"><HiOutlineShoppingCart size={24} /></h1>

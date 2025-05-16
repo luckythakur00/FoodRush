@@ -29,24 +29,24 @@ function FoodPage() {
         const stars = [];
         for (let i = 1; i <= 5; i++) {
             if (rating >= i) {
-                stars.push(<FaStar key={i} className="text-yellow-400" />); // full star
+                stars.push(<FaStar key={i} className="text-yellow-400" />);
             } else if (rating >= i - 0.5) {
-                stars.push(<FaStarHalfAlt key={i} className="text-yellow-400" />); // half star
+                stars.push(<FaStarHalfAlt key={i} className="text-yellow-400" />);
             } else {
-                stars.push(<FaRegStar key={i} className="text-yellow-400" />); // empty star
+                stars.push(<FaRegStar key={i} className="text-yellow-400" />);
             }
         }
         return <div className="flex">{stars}</div>;
     }
 
     return (
-        <div className='h-full w-full lg:w-[90%] m-auto pt-10 md:pt-16 px-6 md:px-10 ' >
+        <div className='h-full w-full lg:w-[90%] m-auto pt-10 md:pt-16 px-6 md:px-10' >
             <h1 className='mt-8 md:mt-10 lg:ml-20 text-lg md:text-2xl font-semibold mb-2 md:mb-4' >Food Details</h1>
             <div className='h-full w-full sm:flex justify-between' >
                 {/* Left Side */}
-                <div className='min-h-20 w-full lg:min-h-72  sm:w-[50%] flex justify-center items-center' >
+                <div className='h-64 w-full sm:h-72 md:h-80  sm:w-[50%] flex justify-center items-center' >
                     <div className='h-full w-full sm:w-[80%] lg:w-[70%] p-4 sm:p-6 border border-black/60' >
-                        <img src={selectedFood.image || food1} className='h-full w-full rounded-md' />
+                        <img src={selectedFood.image || food1} className='h-full w-full rounded-md object-cover' />
                     </div>
                 </div>
 
@@ -73,7 +73,7 @@ function FoodPage() {
             {
                 <div className='h-full w-full overflow-x-scroll flex justify-start gap-4 sm:my-4 p-4'>
                     {
-                        (recomendedFoods.length > 0 ? recomendedFoods : allFoodItems).map(val => (
+                        (recomendedFoods.length > 0 ? recomendedFoods.slice(0,10) : allFoodItems.slice(0,10)).map(val => (
                             <div key={val._id} className='h-56 min-w-44 md:h-64 md:min-w-52 relative rounded-3xl overflow-hidden bg-[#d8d8d844] shadow-md shadow-black/40' >
                                 <div className='h-[65%] cursor-pointer flex justify-center items-center' >
                                     <img src={val.image ? val.image : food1} onClick={() => handleClick(val)} className='h-full w-full object-cover' />
