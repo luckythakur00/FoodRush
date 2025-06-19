@@ -23,6 +23,7 @@ import { useModalStore } from './Store/useModalStore.js'
 import InfoModel from './Components/Modals/InfoModel.jsx'
 import UserOrderPage from './Pages/UserOrderPage.jsx'
 import OrderModel from './Components/Modals/OrderModel.jsx'
+import usePageTracking from './Store/usePageTracking.js'
 
 function App() {
   const { authUser, checkAuth } = useAuthStore();
@@ -37,6 +38,7 @@ function App() {
     getAllItems();
   }, []);
 
+  usePageTracking();
   return (
     <>
       <Header />
